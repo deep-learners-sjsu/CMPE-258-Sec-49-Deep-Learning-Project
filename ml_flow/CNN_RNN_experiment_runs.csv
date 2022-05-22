@@ -1,0 +1,2 @@
+Start Time,Duration,Run ID,Name,Source Type,Source Name,User,Status,BATCH_SIZE,EPOCHS,IMG_SIZE,MAX_SEQ_LENGTH,NUM_FEATURES,accuracy,history
+2022-05-22 10:37:32,,70fa01c041294b498d0e72152e6b02cb,,LOCAL,/usr/local/lib/python3.7/dist-packages/ipykernel_launcher.py,root,RUNNING,64,10,224,20,2048,53.57,<keras.callbacks.History object at 0x7f8b922165d0>
