@@ -188,16 +188,19 @@ def inference_recognizer(model, video, outputs=None, as_tensor=True, **kwargs):
     return top5_label
 
 
-st.title('Action Recognition App')
+st.title('Action Recognition Project')
 
 config_file = 'model_weights/configs/recognition/tsn/tsn_r50_video_inference_1x1x3_100e_kinetics400_rgb.py'
 checkpoint_file = 'model_weights/mmaction_weights/checkpoints/tsn_r50_1x1x3_100e_kinetics400_rgb_20200614-e508be42.pth'
 model = init_recognizer(config_file, checkpoint_file, device='cpu')
 
+st.video('https://www.youtube.com/watch?v=j0HoMaaQj9I&ab_channel=vickris')
+st.subheader('Predicting Actions in Video')
+
 # test a single video and show the result:
-video = 'test_videos/test_video.mp4'
+video1 = 'test_videos/video_1.mp4'
 label = 'model_weights/mmaction_weights/label_map_k400.txt'
-results = inference_recognizer(model, video)
+results = inference_recognizer(model, video1)
 
 labels = open(label).readlines()
 labels = [x.strip() for x in labels]
@@ -206,4 +209,16 @@ results = [(labels[k[0]], k[1]) for k in results]
 # show the results
 for result in results:
     print(f'{result[0]}: ', result[1])
-    st.write(f'{result[0]}: ', result[1])
+    st.write(result[0])
+
+st.video('https://www.youtube.com/watch?v=BK5rwsVizpQ&ab_channel=TRUECLRS')
+st.subheader('Predicting Actions in Video')
+# test a single video and show the result:
+video2 = 'test_videos/video_2.mp4'
+results = inference_recognizer(model, video2)
+results = [(labels[k[0]], k[1]) for k in results]
+
+# show the results
+for result in results:
+    print(f'{result[0]}: ', result[1])
+    st.write(result[0])
